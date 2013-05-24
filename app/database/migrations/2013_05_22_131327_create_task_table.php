@@ -20,6 +20,7 @@ class CreateTaskTable extends Migration {
 	        $table->integer('time');
 	        $table->string('title', 100);
 	        $table->text('description')->nullable();
+	        $table->string('branch', 100)->nullable();
 	        $table->date('begin');
 	        $table->date('deadline');
 	        $table->timestamps();

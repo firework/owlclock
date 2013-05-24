@@ -6,6 +6,14 @@ class ProjectsTableSeeder extends Seeder {
 		$date = Carbon\Carbon::now();
 
 		$projects = [
+			['title' => 'OwlClock',
+			 'begin' => $date,
+			 'deadline' => $date,
+			 'description' => '<p>jakjdhasdjahsjdahdjkhsdhasjdsaj</p><p>dhasjdhsakjdahdkj</p>',
+			 'time' => 180,
+			 'github' => 'https://github.com/firework/owlclock',
+			 'price' => 33.50
+			],
 			['title' => 'Project A',
 			 'begin' => $date,
 			 'deadline' => $date,
