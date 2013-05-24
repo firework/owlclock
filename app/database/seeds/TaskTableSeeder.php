@@ -6,7 +6,7 @@ class TaskTableSeeder extends Seeder {
 		$date = Carbon\Carbon::now();
 
 		$tasks = [
-			['title' => 'Assignment A',
+			['title' => 'Create migration',
 			 'time' => 60,
 			 'description' => '<p>jakjdhasdjahsjdahdjkhsdhasjdsaj</p><p>dhasjdhsakjdahdkj</p>',
 			 'parent_id' => null,
@@ -15,7 +15,7 @@ class TaskTableSeeder extends Seeder {
 			 'deadline' => $date,
 			 'priority' => 4
 			],
-			['title' => 'Assignment B',
+			['title' => 'Assignment A',
 			 'time' => 60,
 			 'description' => '<p>jakjdhasdjahsjdahdjkhsdhasjdsaj</p><p>dhasjdhsakjdahdkj</p>',
 			 'parent_id' => null,
@@ -24,11 +24,20 @@ class TaskTableSeeder extends Seeder {
 			 'deadline' => $date,
 			 'priority' => 4
 			],
+			['title' => 'Assignment B',
+			 'time' => 60,
+			 'description' => '<p>jakjdhasdjahsjdahdjkhsdhasjdsaj</p><p>dhasjdhsakjdahdkj</p>',
+			 'parent_id' => null,
+			 'project_id' => 3,
+			 'begin' => $date,
+			 'deadline' => $date,
+			 'priority' => 4
+			],
 			['title' => 'Assignment A.1',
 			 'time' => 60,
 			 'description' => '<p>jakjdhasdjahsjdahdjkhsdhasjdsaj</p><p>dhasjdhsakjdahdkj</p>',
-			 'parent_id' => 1,
-			 'project_id' => 1,
+			 'parent_id' => 2,
+			 'project_id' => 2,
 			 'begin' => $date,
 			 'deadline' => $date,
 			 'priority' => 4
@@ -36,8 +45,8 @@ class TaskTableSeeder extends Seeder {
 			['title' => 'Assignment A.1.1',
 			 'time' => 60,
 			 'description' => '<p>jakjdhasdjahsjdahdjkhsdhasjdsaj</p><p>dhasjdhsakjdahdkj</p>',
-			 'parent_id' => 1,
-			 'project_id' => 1,
+			 'parent_id' => 2,
+			 'project_id' => 2,
 			 'begin' => $date,
 			 'deadline' => $date,
 			 'priority' => 4
