@@ -20,6 +20,7 @@ class CreateProjectTable extends Migration {
 	        $table->decimal('price', 10, 2);
 	        $table->date('begin');
 	        $table->date('deadline');
+	        $table->string('github', 100)->nullable();
 	        $table->timestamps();
 	    });
 	}
