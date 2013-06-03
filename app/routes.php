@@ -13,8 +13,15 @@
 
 Route::get('/', function()
 {
-	return View::make('_base');
+	return View::make('index');
 });
 Route::resource('projects', 'ProjectController', ['except' => ['destroy']]);
 Route::get('projects/delete/{id}', ['as' => 'projects.delete', 'uses' => 'ProjectController@delete']);
-Route::get('projects/', 'ProjectController@makeIndex');
+
+Route::resource('tasks', 'TaskController', ['except' => ['destroy']]);
+Route::get('tasks/delete/{id}', ['as' => 'tasks.delete', 'uses' => 'TaskController@delete']);
+
+Route::get('test', function()
+{
+	return View::make('index');
+});
