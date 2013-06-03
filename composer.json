@@ -1,7 +1,8 @@
 {
 	"require": {
 		"laravel/framework": "4.0.*",
-		"way/database": "dev-master"
+		"way/database": "dev-master",
+		"way/generators": "dev-master"
 	},
 	"autoload": {
 		"classmap": [

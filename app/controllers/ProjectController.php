@@ -53,4 +53,13 @@ class ProjectController extends BaseController {
 
 		return View::make('projects.create', $this->data);
 	}
+
+	public function delete($id)
+	{
+		$project = Project::find($id);
+
+		$project->delete();
+
+		return Redirect::route('projects.index')->with('success', 'OK');
+	}
 }

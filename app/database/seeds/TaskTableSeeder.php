@@ -16,10 +16,9 @@ class TaskTableSeeder extends Seeder {
 			 'priority' => 4
 			],
 			['title' => 'Assignment A',
-			 'time' => 60,
 			 'description' => '<p>jakjdhasdjahsjdahdjkhsdhasjdsaj</p><p>dhasjdhsakjdahdkj</p>',
 			 'parent_id' => null,
-			 'project_id' => 2,
+			 'project_id' => 1,
 			 'begin' => $date,
 			 'deadline' => $date,
 			 'priority' => 4
@@ -28,7 +27,7 @@ class TaskTableSeeder extends Seeder {
 			 'time' => 60,
 			 'description' => '<p>jakjdhasdjahsjdahdjkhsdhasjdsaj</p><p>dhasjdhsakjdahdkj</p>',
 			 'parent_id' => null,
-			 'project_id' => 3,
+			 'project_id' => 1,
 			 'begin' => $date,
 			 'deadline' => $date,
 			 'priority' => 4
@@ -37,7 +36,7 @@ class TaskTableSeeder extends Seeder {
 			 'time' => 60,
 			 'description' => '<p>jakjdhasdjahsjdahdjkhsdhasjdsaj</p><p>dhasjdhsakjdahdkj</p>',
 			 'parent_id' => 2,
-			 'project_id' => 2,
+			 'project_id' => 1,
 			 'begin' => $date,
 			 'deadline' => $date,
 			 'priority' => 4
@@ -45,8 +44,17 @@ class TaskTableSeeder extends Seeder {
 			['title' => 'Assignment A.1.1',
 			 'time' => 60,
 			 'description' => '<p>jakjdhasdjahsjdahdjkhsdhasjdsaj</p><p>dhasjdhsakjdahdkj</p>',
-			 'parent_id' => 2,
-			 'project_id' => 2,
+			 'parent_id' => 4,
+			 'project_id' => 1,
+			 'begin' => $date,
+			 'deadline' => $date,
+			 'priority' => 4
+			],
+			['title' => 'Assignment A.1.2',
+			 'time' => 60,
+			 'description' => '<p>jakjdhasdjahsjdahdjkhsdhasjdsaj</p><p>dhasjdhsakjdahdkj</p>',
+			 'parent_id' => 4,
+			 'project_id' => 1,
 			 'begin' => $date,
 			 'deadline' => $date,
 			 'priority' => 4
