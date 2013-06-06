@@ -33,6 +33,13 @@ class Task extends Eloquent {
         static::saving(function($model)
         {
             $model->oldTime = $model->getOriginal('time');
+
+            if ($model->parent_id !== null and $model->parent_id != $model->getOriginal('parent_id'))
+            {
+                $oldParentTask = Task::find($model->getOriginal('parent_id'));
+                $oldParentTask->time -= $model->time;
+                $oldParentTask->save();
+            }
         });
 
         static::saved(function($model)

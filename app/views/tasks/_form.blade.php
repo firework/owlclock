@@ -1,3 +1,5 @@
+	{{ Form::hidden('project_id', $project->id) }}
+
 @if ($errors)
 	<ul>
 		@foreach ($errors->all() as $error)
@@ -11,10 +13,6 @@
 	{{ Form::text('title') }}
 </div>
 
-<div>
-	{{ Form::label('project_id', 'Projeto') }}
-	{{ Form::select('project_id', $projects) }}
-</div>
 
 <div>
 	{{ Form::label('parent_id', 'Task') }}

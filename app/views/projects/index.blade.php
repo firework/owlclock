@@ -5,6 +5,7 @@
 <table class="table table-bordered table-striped">
 	<tr>
 		<th>Nome</th>
+		<th style="width: 10px;">Add</th>
 		<th style="width: 10px;">Git</th>
 		<th style="width: 80px;">Início</th>
 		<th style="width: 80px;">Fim</th>
@@ -15,6 +16,9 @@
 	@foreach ($projects as $project)
     <tr>
 		<td>{{ $project->title }}</td>
+		<td>
+			<a href="{{ URL::route('tasks.create', $project->id) }}">+Task</a>
+		</td>
 		@if ($project->github)
 			<td><a href="{{ $project->github }}"><img src="{{ URL::asset('img/github_icon.png') }}"></a></td>
 		@else

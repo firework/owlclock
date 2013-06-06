@@ -20,11 +20,13 @@ class TaskController extends BaseController {
      *
      * @return Response
      */
-    public function create()
+    public function create($project_id)
     {
-        $this->data['title'] = 'Criar Tasks';
-        $this->data['projects'] = Project::getSelectArray();
-        $this->data['tasks'] = Task::getSelectArray();
+        $project = Project::find($project_id);
+        $this->data['project'] = $project;
+        $this->data['title'] = 'Criar Tasks - Projeto: ' . $this->data['project']->title;
+        $this->data['tasks'] = $project->getTasksSelect();
+
         return View::make('tasks.create', $this->data);
     }
 
