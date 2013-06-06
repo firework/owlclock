@@ -39,9 +39,9 @@
 					<a class="brand" href="#">OwlClock</a>
 					<div class="nav-collapse collapse">
 						<ul class="nav">
-							<!-- <li><a href="[[ URL::to('/') ]]">Página Inicial</a></li> -->
-							<!-- <li><a href="[[ URL::route('categories.index') ]]">Categorias</a></li> -->
-							<!-- <li><a href="[[ URL::route('customers.index') ]]">Clientes</a></li> -->
+							<li><a href="{{ URL::to('/') }}">Página Inicial</a></li>
+							<li><a href="{{ URL::route('tasks.index') }}">Tasks</a></li>
+							<li><a href="{{ URL::route('projects.index') }}">Projects</a></li>
 							<!-- <li><a href="[[ URL::route('states.index') ]]">Estados</a></li> -->
 						</ul>
 					</div>
