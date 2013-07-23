@@ -2,18 +2,26 @@
 
 class ProjectController extends BaseController {
 
+	protected $model;
+
+	public function __construct()
+	{
+		// parent::__construct();
+
+		// $this->model = app('Project');
+	}
 
 	public function index()
 	{
-		$this->data['projects'] = Project::all();
-
 		return View::make('projects.index')->with('projects', Project::all());
 	}
 
 	public function show($id)
 	{
-
-		return View::make('projects.show')->with('project', Project::find($id));
+		$project = Project::find($id);
+		$this->data['project'] = $project;
+		$this->data['tasks'] = $project->getTasksTable();
+		return View::make('projects.show', $this->data);
 	}
 
 	public function edit($id)

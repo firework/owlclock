@@ -14,6 +14,10 @@
 				body {
 					padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
 				}
+
+				.modal > form {
+					margin-bottom: 0;
+				}
 			</style>
 			<link href="{{ URL::asset('css/bootstrap-responsive.css') }}" rel="stylesheet">
 
@@ -40,7 +44,6 @@
 					<div class="nav-collapse collapse">
 						<ul class="nav">
 							<li><a href="{{ URL::to('/') }}">Página Inicial</a></li>
-							<li><a href="{{ URL::route('tasks.index') }}">Tasks</a></li>
 							<li><a href="{{ URL::route('projects.index') }}">Projects</a></li>
 							<!-- <li><a href="[[ URL::route('states.index') ]]">Estados</a></li> -->
 						</ul>

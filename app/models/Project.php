@@ -78,4 +78,19 @@ class Project extends Model {
 
 		static::destroy($ids);
 	}
+
+	public function getTasksSelect($blank = true)
+	{
+		$selectArray = $blank ? ['' => ''] : [];
+		$tasksArray = $this->getTasks();
+		foreach ($tasksArray as $task) {
+			$selectArray[$task->id] = $task->title;
+		}
+		return $selectArray;
+	}
+
+	public function getTasksTable()
+	{
+		return Task::getTableArray($this->id);
+	}
 }

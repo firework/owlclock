@@ -17,11 +17,6 @@
 </div>
 
 <div>
-	{{ Form::label('time', 'Tempo') }}
-	{{ Form::input('number', 'time') }}
-</div>
-
-<div>
 	{{ Form::label('github', 'Github') }}
 	{{ Form::text('github') }}
 </div>
