@@ -19,12 +19,15 @@ Route::get('/', function()
 Route::resource('projects', 'ProjectController', ['except' => ['destroy']]);
 Route::get('projects/delete/{id}', ['as' => 'projects.delete', 'uses' => 'ProjectController@delete']);
 
-Route::resource('tasks', 'TaskController', ['except' => ['destroy', 'create']]);
-Route::get('tasks/delete/{id}', ['as' => 'tasks.delete', 'uses' => 'TaskController@delete']);
-Route::get('tasks/create/{id}', ['as' => 'tasks.create', 'uses' => 'TaskController@create']);
+Route::resource('projects.tasks', 'TaskController', ['except' => ['destroy']]);
+Route::get('projects/{projects}/tasks/{tasks}/delete', ['as' => 'projects.tasks.delete', 'uses' => 'TaskController@delete']);
 
 
-Route::get('test', function()
-{
-	return View::make('index');
-});
+
+Route::resource('projects.tasks.comments', 'CommentsController', ['except' => ['destroy', 'index', 'show']]);
+Route::get('projects/{projects}/tasks/{tasks}/comments/{comment}/delete', ['as' => 'projects.tasks.comments.delete', 'uses' => 'CommentController@delete']);
+Route::get('comments/delete/{id}', ['as' => 'comments.delete', 'uses' => 'CommentsController@delete']);
+
+
+Route::resource('times', 'TimesController', ['except' => ['destroy', 'index', 'show']]);
+Route::get('times/delete/{id}', ['as' => 'times.delete', 'uses' => 'TimesController@delete']);

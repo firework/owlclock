@@ -11,6 +11,8 @@
 		<p>{{ $project->deadline }}</p>
 	</div>
 
+	<a href="{{ URL::route('projects.tasks.create', $project->id) }}">+Task</a>
+
 @if ($tasks)
 	<table class="table table-bordered table-striped">
 		<tr>
@@ -34,9 +36,9 @@
 			<td>{{ $task->deadline }}</td>
 			<td style="text-indent: {{ $task->indent * 15 }}px">{{ $task->time }}</td>
 			<td>
-				<a href="{{ URL::route('tasks.show', $task->id) }}">Ver</a> |
-				<a href="{{ URL::route('tasks.edit', $task->id) }}">Editar</a> |
-				<a href="{{ URL::route('tasks.delete', $task->id) }}">Deletar</a>
+				<a href="{{ URL::route('projects.tasks.show', [$task->project_id, $task->id]) }}">Ver</a> |
+				<a href="{{ URL::route('projects.tasks.edit', [$task->project_id, $task->id]) }}">Editar</a> |
+				<a href="{{ URL::route('projects.tasks.delete', [$task->project_id, $task->id]) }}">Deletar</a>
 			</td>
 		</tr>
 		@endforeach

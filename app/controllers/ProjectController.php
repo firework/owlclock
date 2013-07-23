@@ -2,6 +2,14 @@
 
 class ProjectController extends BaseController {
 
+	protected $model;
+
+	public function __construct()
+	{
+		// parent::__construct();
+
+		// $this->model = app('Project');
+	}
 
 	public function index()
 	{
@@ -12,7 +20,7 @@ class ProjectController extends BaseController {
 	{
 		$project = Project::find($id);
 		$this->data['project'] = $project;
-		$this->data['tasks'] = $project->getTasks();
+		$this->data['tasks'] = $project->getTasksTable();
 		return View::make('projects.show', $this->data);
 	}
 

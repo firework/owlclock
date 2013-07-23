@@ -21,7 +21,7 @@
 
 <div>
 	{{ Form::label('time', 'Tempo') }}
-	{{ Form::input('number', 'time') }}
+	{{ Form::input('number', 'time', null, ['min' => '0']) }}
 </div>
 
 <div>

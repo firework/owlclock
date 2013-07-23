@@ -1,6 +1,5 @@
 @extends('_base')
 
-
 @section('content')
 <table class="table table-bordered table-striped">
 	<tr>
@@ -17,7 +16,7 @@
     <tr>
 		<td>{{ $project->title }}</td>
 		<td>
-			<a href="{{ URL::route('tasks.create', $project->id) }}">+Task</a>
+			<a href="{{ URL::route('projects.tasks.create', $project->id) }}">+Task</a>
 		</td>
 		@if ($project->github)
 			<td><a href="{{ $project->github }}"><img src="{{ URL::asset('img/github_icon.png') }}"></a></td>

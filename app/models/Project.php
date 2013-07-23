@@ -88,4 +88,9 @@ class Project extends Model {
 		}
 		return $selectArray;
 	}
+
+	public function getTasksTable()
+	{
+		return Task::getTableArray($this->id);
+	}
 }
