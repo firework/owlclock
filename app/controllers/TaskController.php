@@ -12,7 +12,7 @@ class TaskController extends BaseController {
         $this->data['title'] = 'Listar Tasks';
         $this->data['tasks'] = Task::getTableArray();
 
-        return View::make('tasks.index', $this->data);
+        return View::make('projects.tasks.index', $this->data);
     }
 
     /**
@@ -20,12 +20,14 @@ class TaskController extends BaseController {
      *
      * @return Response
      */
-    public function create()
+    public function create($project_id)
     {
-        $this->data['title'] = 'Criar Tasks';
-        $this->data['projects'] = Project::getSelectArray();
-        $this->data['tasks'] = Task::getSelectArray();
-        return View::make('tasks.create', $this->data);
+        $project = Project::find($project_id);
+        $this->data['project'] = $project;
+        $this->data['title'] = 'Criar Tasks - Projeto: ' . $this->data['project']->title;
+        $this->data['tasks'] = $project->getTasksSelect();
+
+        return View::make('projects.tasks.create', $this->data);
     }
 
     /**
@@ -33,13 +35,13 @@ class TaskController extends BaseController {
      *
      * @return Response
      */
-    public function store()
+    public function store($project_id)
     {
         $task = new Task(Input::all());
 
         if ($task->save())
         {
-            return Redirect::route('tasks.index')->with('success', 'OK');
+            return Redirect::route('projects.show', $project_id)->with('success', 'OK');
         }
 
         return Redirect::back()->withInput()->withErrors($task->getErrors());
@@ -51,9 +53,12 @@ class TaskController extends BaseController {
      * @param  int  $id
      * @return Response
      */
-    public function show($id)
+    public function show($project_id, $id)
     {
-        return View::make('tasks.show')->with('task', Task::find($id));
+        $task = Task::find($id);
+        $this->data['task'] = $task;
+        $this->data['title'] = $task->project->title;
+        return View::make('projects.tasks.show')->with($this->data);
     }
 
     /**
@@ -62,14 +67,16 @@ class TaskController extends BaseController {
      * @param  int  $id
      * @return Response
      */
-    public function edit($id)
+    public function edit($project_id, $id)
     {
+        $task = Task::find($id);
         $this->data['errors'] = Session::get('errors');
         $this->data['projects'] = Project::getSelectArray();
         $this->data['tasks'] = Task::getSelectArray();
-        $this->data['task'] = Task::find($id);
+        $this->data['task'] = $task;
+        $this->data['project'] = $task->project;
 
-        return View::make('tasks.edit', $this->data);
+        return View::make('projects.tasks.edit', $this->data);
     }
 
     /**
@@ -78,13 +85,14 @@ class TaskController extends BaseController {
      * @param  int  $id
      * @return Response
      */
-    public function update($id)
+    public function update($project_id, $id)
     {
         $task = Task::find($id)->fill(Input::all());
 
         if ($task->save())
         {
-            return Redirect::route('tasks.index')->with('success', 'OK');
+            return Redirect::route('projects.show', $project_id)->with('success', 'OK');
+            // return Redirect::route('tasks.index')->with('success', 'OK');
         }
 
         return Redirect::back()->withInput()->withErrors($task->getErrors());
@@ -92,12 +100,12 @@ class TaskController extends BaseController {
 
 
 
-    public function delete($id)
+    public function delete($project_id, $id)
     {
         $task = Task::find($id);
         $task->destroy($id);
 
-        return Redirect::route('tasks.index')->with('success', 'OK');
+        return Redirect::route('projects.show', $project_id)->with('success', 'OK');
 
     }
 

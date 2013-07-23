@@ -20,9 +20,19 @@ class Task extends Eloquent {
 	}
 
 	public function children()
-	{
-		return $this->hasMany('Task', 'parent_id');
-	}
+    {
+        return $this->hasMany('Task', 'parent_id');
+    }
+
+    public function comments()
+    {
+        return $this->hasMany('Comment', 'task_id');
+    }
+
+    public function times()
+    {
+        return $this->hasMany('Time', 'task_id');
+    }
 
 	protected $oldTime;
 
@@ -33,6 +43,13 @@ class Task extends Eloquent {
         static::saving(function($model)
         {
             $model->oldTime = $model->getOriginal('time');
+
+            if ($model->parent_id !== null and $model->getOriginal('parent_id') !== null and $model->parent_id != $model->getOriginal('parent_id'))
+            {
+                $oldParentTask = Task::find($model->getOriginal('parent_id'));
+                $oldParentTask->time -= $model->time;
+                $oldParentTask->save();
+            }
         });
 
         static::saved(function($model)
@@ -91,10 +108,10 @@ class Task extends Eloquent {
         return $query->where('parent_id', null);
     }
 
-    public static function getTableArray()
+    public static function getTableArray($project_id = null)
     {
         $tableArray  = [];
-        $roots       = static::roots()->get();
+        $roots       = static::roots()->where('project_id', $project_id)->get();
         $func = function($node, $indent = 0) use (&$tableArray, &$func) {
             $node->indent = $indent;
             $tableArray[] = $node;

@@ -23,13 +23,13 @@
 		<td>{{ $task->deadline }}</td>
 		<td style="text-indent: {{ $task->indent * 15 }}px">{{ $task->time }}</td>
 		<td>
-			<a href="{{ URL::route('tasks.show', $task->id) }}">Ver</a> |
-			<a href="{{ URL::route('tasks.edit', $task->id) }}">Editar</a> |
-			<a href="{{ URL::route('tasks.delete', $task->id) }}">Deletar</a>
+			<a href="{{ URL::route('projects.tasks.show', [$task->project_id, $task->id]) }}">Ver</a> |
+			<a href="{{ URL::route('projects.tasks.edit', [$task->project_id, $task->id]) }}">Editar</a> |
+			<a href="{{ URL::route('projects.tasks.delete', [$task->project_id, $task->id]) }}">Deletar</a>
 		</td>
 	</tr>
 	@endforeach
 
 </table>
-<a href="{{ URL::route('tasks.create') }}">Adicionar Task</a>
+<a href="{{ URL::route('projects.tasks.create', [$task->project_id]) }}">Adicionar Task</a>
 @stop
